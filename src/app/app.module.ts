@@ -6,6 +6,13 @@ import { AppComponent } from './app.component';
 import { SignupComponent } from './signup/signup.component';
 import { SigninComponent } from './signin/signin.component';
 import { HomeComponent } from './home/home.component';
+import { Route, RouterModule } from '@angular/router';
+
+const routeList: Route[] = [
+  { path: 'signup', component: SignupComponent },
+  { path: 'signin', component: SigninComponent },
+  { path: '', component: HomeComponent }
+];
 
 @NgModule({
   declarations: [
@@ -16,7 +23,8 @@ import { HomeComponent } from './home/home.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    RouterModule.forRoot(routeList)
   ],
   providers: [],
   bootstrap: [AppComponent]
