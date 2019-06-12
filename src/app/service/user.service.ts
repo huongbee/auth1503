@@ -9,7 +9,7 @@ export class UserService {
     constructor(private http: HttpClient) {
     }
 
-    signUp(email: string, name: string, password: string): Promise<User> {
+    async signUp(email: string, name: string, password: string): Promise<User> {
         return this.http.post(`${SERVER_URL}user/signup`, { email, name, password })
         .toPromise()
         .then((result: ServerResponse) => {

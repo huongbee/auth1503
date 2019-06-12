@@ -7,6 +7,7 @@ import { SignupComponent } from './signup/signup.component';
 import { SigninComponent } from './signin/signin.component';
 import { HomeComponent } from './home/home.component';
 import { Route, RouterModule } from '@angular/router';
+import { UserService } from './service/user.service';
 
 const routeList: Route[] = [
   { path: 'signup', component: SignupComponent },
@@ -26,7 +27,7 @@ const routeList: Route[] = [
     AppRoutingModule,
     RouterModule.forRoot(routeList)
   ],
-  providers: [],
+  providers: [UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
