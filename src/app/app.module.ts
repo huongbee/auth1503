@@ -8,6 +8,8 @@ import { SigninComponent } from './signin/signin.component';
 import { HomeComponent } from './home/home.component';
 import { Route, RouterModule } from '@angular/router';
 import { UserService } from './service/user.service';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 const routeList: Route[] = [
   { path: 'signup', component: SignupComponent },
@@ -25,7 +27,10 @@ const routeList: Route[] = [
   imports: [
     BrowserModule,
     AppRoutingModule,
-    RouterModule.forRoot(routeList)
+    RouterModule.forRoot(routeList),
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [UserService],
   bootstrap: [AppComponent]
