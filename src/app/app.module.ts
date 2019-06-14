@@ -18,7 +18,7 @@ import { CheckUserLogin } from './guard/authenticate.guard';
 const routeList: Route[] = [
   { path: 'signup', component: SignupComponent },
   { path: 'signin', component: SigninComponent },
-  { path: '', component: HomeComponent, canActivate: CheckUserLogin }
+  { path: '', component: HomeComponent, canActivate: [ CheckUserLogin ] }
 ];
 
 @NgModule({
@@ -39,7 +39,7 @@ const routeList: Route[] = [
       user: userReducer
     }),
   ],
-  providers: [UserService],
+  providers: [UserService, CheckUserLogin],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
