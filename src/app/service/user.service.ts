@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { SERVER_URL, ServerResponse, User } from '../types';
 
 @Injectable({
@@ -33,6 +33,13 @@ export class UserService {
             const userInfo = response.data;
             return Promise.resolve(userInfo);
         })
+        .catch(error => Promise.reject(error.message));
+    }
+    async check(token: string) {
+        const headers = new HttpHeaders({token});
+        this.http.post(`${SERVER_URL}user/check-user`, {}, { headers })
+        .toPromise()
+        .then(user => Promise.resolve(user))
         .catch(error => Promise.reject(error.message));
     }
 }
