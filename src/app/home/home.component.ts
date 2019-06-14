@@ -28,7 +28,9 @@ export class HomeComponent implements OnInit {
         this.loading = false;
         this.store.dispatch({ type: 'USER_INIT', user });
     })
-    .catch(error => console.log(error));
+    .catch(error => {
+        this.router.navigateByUrl('/signin');
+    });
   }
 
 }

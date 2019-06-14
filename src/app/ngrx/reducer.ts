@@ -1,4 +1,4 @@
-import { Store } from '@ngrx/store';
+import { Store, Action } from '@ngrx/store';
 import { User } from '../types';
 
 export function userReducer(state: Store<User> = null, action: any) {
@@ -12,4 +12,10 @@ export function userReducer(state: Store<User> = null, action: any) {
         return action.user;
     }
     return state; // null;
+}
+export function loading(state = true, action: Action) {
+    if (action.type === 'LOADDED') {
+        return false;
+    }
+    return state;
 }

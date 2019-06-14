@@ -39,7 +39,12 @@ export class UserService {
         const headers = new HttpHeaders({token});
         return this.http.post(`${SERVER_URL}user/check-user`, {}, { headers })
         .toPromise()
-        .then((user: any) => Promise.resolve(user.data))
+        .then((response: any) => {
+            if (!response.success) {
+                throw new Error(response.message);
+            }
+            Promise.resolve(response.data);
+        })
         .catch(error => Promise.reject(error.message));
     }
 }

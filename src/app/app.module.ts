@@ -12,11 +12,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { userReducer } from './ngrx/reducer';
 import { StoreModule } from '@ngrx/store';
+import { CheckUserLogin } from './guard/authenticate.guard';
+
 
 const routeList: Route[] = [
   { path: 'signup', component: SignupComponent },
   { path: 'signin', component: SigninComponent },
-  { path: '', component: HomeComponent }
+  { path: '', component: HomeComponent, canActivate: CheckUserLogin }
 ];
 
 @NgModule({
