@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { UserService } from '../service/user.service';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { User } from '../types';
 
 @Component({
   selector: 'app-signin',
@@ -12,7 +14,7 @@ export class SigninComponent implements OnInit {
   signInForm: FormGroup;
   errorMessage: string;
 
-  constructor(private fb: FormBuilder, private userService: UserService, private router: Router) {
+  constructor(private fb: FormBuilder, private userService: UserService, private router: Router, private store: Store<User>) {
     this.signInForm = this.fb.group({
       email: ['', Validators.required],
       password: ['', [
@@ -30,6 +32,8 @@ export class SigninComponent implements OnInit {
     .then(result => {
       // console.log(result); // { user, token }
       localStorage.setItem('token', result.token);
+      // update user state
+      this.store.dispatch({ type: 'USER_LOGIN', user: result.user });
       this.router.navigateByUrl('/');
     })
     .catch(error => {
