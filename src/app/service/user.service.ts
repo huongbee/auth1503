@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { SERVER_URL, ServerResponse, User } from '../types';
-import { ServerResponse, ServerResponse } from 'http';
 
 @Injectable({
     providedIn: 'root'

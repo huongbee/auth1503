@@ -10,6 +10,8 @@ import { Route, RouterModule } from '@angular/router';
 import { UserService } from './service/user.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { userReducer } from './ngrx/reducer';
+import { StoreModule } from '@ngrx/store';
 
 const routeList: Route[] = [
   { path: 'signup', component: SignupComponent },
@@ -30,7 +32,10 @@ const routeList: Route[] = [
     RouterModule.forRoot(routeList),
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    StoreModule.forRoot({
+      user: userReducer
+    }),
   ],
   providers: [UserService],
   bootstrap: [AppComponent]
