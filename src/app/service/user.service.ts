@@ -37,9 +37,9 @@ export class UserService {
     }
     async check(token: string) {
         const headers = new HttpHeaders({token});
-        this.http.post(`${SERVER_URL}user/check-user`, {}, { headers })
+        return this.http.post(`${SERVER_URL}user/check-user`, {}, { headers })
         .toPromise()
-        .then(user => Promise.resolve(user))
+        .then((user: any) => Promise.resolve(user.data))
         .catch(error => Promise.reject(error.message));
     }
 }

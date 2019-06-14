@@ -8,5 +8,8 @@ export function userReducer(state: Store<User> = null, action: any) {
     if (action.type === 'USER_LOGOUT') {
         return null;
     }
+    if (action.type === 'USER_INIT') {
+        return action.user;
+    }
     return state; // null;
 }

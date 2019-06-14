@@ -1,3 +1,4 @@
-<div>
+<div *ngIf="!loading">
   <p>Hello, {{userInfo.name}}</p>
 </div>
+<div *ngIf="loading">loading...</div>
