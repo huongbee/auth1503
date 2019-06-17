@@ -19,10 +19,6 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     const token = localStorage.getItem('token');
-    if (!token) {
-      this.router.navigateByUrl('/signin');
-      return;
-    }
     this.userService.check(token)
     .then(user => {
         this.loading = false;

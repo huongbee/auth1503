@@ -43,7 +43,7 @@ export class UserService {
             if (!response.success) {
                 throw new Error(response.message);
             }
-            Promise.resolve(response.data);
+            return Promise.resolve(response.data);
         })
         .catch(error => Promise.reject(error.message));
     }
